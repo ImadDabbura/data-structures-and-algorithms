@@ -8,9 +8,6 @@ O(1).
 '''
 
 
-from stack import LinkedStack
-
-
 __author__ = '{Imad Dabbura}'
 
 
