@@ -47,7 +47,6 @@ class LinkedListStack:
         if self.is_empty():
             raise Empty("Stack underflow.")
         element = self._head._element
-        tmp = self._head
         self._head = self._head._next
         self._size -= 1
         return element
