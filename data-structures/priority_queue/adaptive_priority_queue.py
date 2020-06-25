@@ -32,8 +32,9 @@ class AdaptablePriorityQueue(HeapPriorityQueue):
         self._upheap(len(self._data) - 1)
         return item
 
-    def remove(self, i):
-        if 0 <= 0 < len(self._data):
+    def remove(self, loc):
+        i = loc._index
+        if not (0 <= i < len(self._data) and self._data[i] is loc):
             raise ValueError("Invalid locator")
         if i == len(self._data) - 1:
             item = self._data.pop()
@@ -41,11 +42,11 @@ class AdaptablePriorityQueue(HeapPriorityQueue):
             self._swap(i, len(self._data) - 1)
             item = self._data.pop()
             self._bubble(i)
-        return (item._key, item._value)
+        return (loc._key, loc._value)
 
-    def update(self, i, k, v):
-        item = self._data[i]
-        if 0 <= 0 < len(self._data):
+    def update(self, loc, k, v):
+        i = loc._index
+        if not (0 <= i < len(self._data) and self._data[i] is loc):
             raise ValueError("Invalid locator")
-        item._key, item._value = k, v
+        loc._key, loc._value = k, v
         self._bubble(i)
