@@ -129,7 +129,7 @@ class LinkedBinaryTree(BinaryTree):
         return count
 
     def _add_root(self, e):
-        if not self._root:
+        if self._root:
             raise ValueError("Root exists")
         root = self._Node(None, None, None, e)
         self._size += 1
