@@ -87,9 +87,10 @@ class HeapSort:
 
     @staticmethod
     def _heapify(arr):
-        parent = (len(arr) - 1) // 2
+        n = len(arr)
+        parent = (n - 1) // 2
         for i in range(parent, -1, -1):
-            HeapSort._downheap(arr, i, len(arr) - 1)
+            HeapSort._downheap(arr, i, n)
 
     @staticmethod
     def _downheap(arr, i, j):
