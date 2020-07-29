@@ -18,15 +18,15 @@ def construct_path(u, v, discovered):
         path.append(v)
         walk = v
         while walk is not u:
-            edge, _ = discovered[v]
-            parent = edge.opposite(v)
+            edge, _ = discovered[walk]
+            parent = edge.opposite(walk)
             path.append(parent)
             walk = parent
         path.reverse()
     return path
 
 
-def DFS_complete(g):
+def DFS_complete(g, outgoing=True):
     """
     Perform DFS for the entire graph. In the case where the graph is not
     connected, we can count the number of vertces in the forest dictionary 
@@ -38,6 +38,6 @@ def DFS_complete(g):
         if v not in forest:
             component += 1
             forest[v] = (None, component)
-            DFS(g, v, component, forest)
+            DFS(g, v, forest, component, outgoing)
     return forest
 
