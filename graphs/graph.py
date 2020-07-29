@@ -91,14 +91,14 @@ class Graph:
             yield edge
 
     def remove_vertex(self, v):
-        adj = self._outgoing[v]
-        for u in adj:
+        in_adj = self._incoming[v]
+        out_adj = self._outgoing[v]
+        for u in in_adj:
             del self._outgoing[u][v]
-            if self.is_directed():
-                del self._incoming[u][v]
+        del self._incoming[v]
+        for u in out_adj:
+            del self._incoming[v][u]
         del self._outgoing[v]
-        if self.is_directed():
-            del self._incoming[v]
 
     def remove_edge(self, e):
         origin, destination = e.endpoints()
