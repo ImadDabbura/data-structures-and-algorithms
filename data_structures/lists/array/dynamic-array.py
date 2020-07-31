@@ -72,7 +72,7 @@ class DynamicArray:
                     self._A[j] = self._A[i + 1]
                 self._n -= 1
                 self._A[self._n] = None  # Avoid loitering
-                if self._n > 0 and self._n == self._capacity / 4:
+                if self._n > 0 and self._n == self._capacity // 4:
                     # Half the array
                     self._resize(self._capacity * 0.5)
                 return

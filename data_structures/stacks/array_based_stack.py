@@ -45,7 +45,7 @@ class ResizedArrayStack:
         self._size -= 1
         e = self._data[self._size]
         self._data[self._size] = None
-        if 0 < self._size == self._capacity / 4:
+        if 0 < self._size == self._capacity // 4:
             self._resize(self._capacity // 2)
         return e
 

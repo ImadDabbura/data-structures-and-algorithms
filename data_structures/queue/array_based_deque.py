@@ -69,7 +69,7 @@ class ArrayDeque:
         self._data[self._first] = None
         self._first = (self._first + 1) % self._capacity
         self._size -= 1
-        if 0 < self._size == self._capacity / 4:
+        if 0 < self._size == self._capacity // 4:
             self._resize(self._capacity // 2)
         return e
 
@@ -81,7 +81,7 @@ class ArrayDeque:
         self._data[self._last] = None
         self._last = (self._last - 1) % self._capacity
         self._size -= 1
-        if 0 < self._size == self._capacity / 4:
+        if 0 < self._size == self._capacity // 4:
             self._resize(self._capacity // 2)
         return e
 

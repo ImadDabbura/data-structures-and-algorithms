@@ -52,7 +52,7 @@ class ResizedArrayQueue:
         self._size -= 1
         self._first = (self._first + 1) % self._capacity
 
-        if 0 < self._size == self._capacity / 4:
+        if 0 < self._size == self._capacity // 4:
             self._resize(self._capacity // 2)
         return e
 
