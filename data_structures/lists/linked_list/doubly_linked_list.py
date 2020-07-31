@@ -58,7 +58,7 @@ class DLList(_DLListBase):
     """List of objects using Doubly Linked List data structure."""
 
     def __getitem__(self, index):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty")
         elif not 0 <= index < self._size:
             raise IndexError("index out of range")
@@ -90,12 +90,12 @@ class DLList(_DLListBase):
         )
 
     def get_first(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("List is empty.")
         return self._sentinel_front._next._element
 
     def get_last(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("List is empty.")
         return self._sentinel_back._prev._element
 
@@ -109,20 +109,20 @@ class DLList(_DLListBase):
             while position > 0:
                 current_node = current_node._next
                 position -= 1
-            self._insert_between(e, current_node, current_node._next)
+            self._insert_between(e, current_node._prev, current_node)
 
     def remove_first(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         _ = self._delete_node(self._sentinel_front._next)
 
     def remove_last(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         _ = self._delete_node(self._sentinel_back._prev)
 
     def remove(self, e):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         current_node = self._sentinel_front._next
         while current_node:
@@ -133,7 +133,7 @@ class DLList(_DLListBase):
         raise ValueError(f"{e} not in list")
 
     def __contains__(self, e):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         current_node = self._sentinel_front._next
         while current_node:
@@ -143,7 +143,7 @@ class DLList(_DLListBase):
         return False
 
     def count(self, e):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         current_node = self._sentinel_front._next
         total = 0
@@ -193,7 +193,7 @@ class CircularDLList(_CircularDLListBase):
     """List of objects using Doubly Linked List data structure."""
 
     def __getitem__(self, index):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty")
         elif not 0 <= index < self._size:
             raise IndexError("index out of range")
@@ -221,12 +221,12 @@ class CircularDLList(_CircularDLListBase):
         self._insert_between(element, self._sentinel._prev, self._sentinel)
 
     def get_first(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("List is empty.")
         return self._sentinel._next._element
 
     def get_last(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("List is empty.")
         return self._sentinel._prev._element
 
@@ -243,17 +243,17 @@ class CircularDLList(_CircularDLListBase):
             self._insert_between(e, current_node, current_node._next)
 
     def remove_first(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         _ = self._delete_node(self._sentinel._next)
 
     def remove_last(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         _ = self._delete_node(self._sentinel._prev)
 
     def remove(self, e):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         current_node = self._sentinel._next
         position = 0
@@ -266,7 +266,7 @@ class CircularDLList(_CircularDLListBase):
         raise ValueError(f"{e} not in list")
 
     def __contains__(self, e):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         current_node = self._sentinel._next
         while current_node is not self._sentinel:
@@ -276,7 +276,7 @@ class CircularDLList(_CircularDLListBase):
         return False
 
     def count(self, e):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         current_node = self._sentinel._next
         total = 0
