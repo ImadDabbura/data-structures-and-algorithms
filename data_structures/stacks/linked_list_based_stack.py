@@ -62,11 +62,11 @@ class LinkedListStack:
         return self._size == 0
 
     def reverse(self, inplace=False):
-        if not inplace:
+        if inplace:
             return self._reverse_destructive()
-        self._reverse()
+        self._reverse_nondestructive()
 
-    def _reverse(self):
+    def _reverse_destructive(self):
         if self._size <= 1:
             return
         current_node = self._head._next
@@ -77,7 +77,7 @@ class LinkedListStack:
             self._head = current_node
             current_node = tmp
 
-    def _reverse_destructive(self):
+    def _reverse_nondestructive(self):
         """Non-destrucive reverse. Returns new instance of Queue with reversed element."""
         S = LinkedListStack()
         current_node = self._head
