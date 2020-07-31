@@ -60,7 +60,7 @@ class DLListDeque(_DLListBase):
     """
 
     def __getitem__(self, index):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty")
         elif not 0 <= index < self._size:
             raise IndexError("index out of range")
@@ -82,22 +82,22 @@ class DLListDeque(_DLListBase):
         )
 
     def first(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("List is empty.")
         return self._sentinel_front._next._element
 
     def last(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("List is empty.")
         return self._sentinel_back._prev._element
 
     def remove_first(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         _ = self._delete_node(self._sentinel_front._next)
 
     def remove_last(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         _ = self._delete_node(self._sentinel_back._prev)
 
@@ -130,7 +130,7 @@ class CircularDLListDeque(_CircularDLListBase):
     """
 
     def __getitem__(self, index):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty")
         elif not 0 <= index < self._size:
             raise IndexError("index out of range")
@@ -148,22 +148,22 @@ class CircularDLListDeque(_CircularDLListBase):
         self._insert_between(element, self._sentinel._prev, self._sentinel)
 
     def first(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("List is empty.")
         return self._sentinel._next._element
 
     def last(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("List is empty.")
         return self._sentinel._prev._element
 
     def remove_first(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         _ = self._delete_node(self._sentinel._next)
 
     def remove_last(self):
-        if self._size == 0:
+        if self.is_empty():
             raise Empty("list is empty.")
         _ = self._delete_node(self._sentinel._prev)
 
