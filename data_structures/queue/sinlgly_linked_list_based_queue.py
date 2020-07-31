@@ -150,15 +150,16 @@ class CircularLinkedListQueue:
 
     def __iter__(self):
         """Return the class itself as an iterator."""
-        self._current_node = self._tail._next
-        self._counter = 0
+        if self.is_empty():
+            self._current_node = None
+        else:
+            self._current_node = self._tail._next
         return self
 
     def __next__(self):
         """Returns the next element in the queue or raise StopIteration error."""
-        if self._counter >= self._size:
+        if not self._current_node:
             raise StopIteration()
-        element = self._current_node._element
+        element = self._current_node._next._element
         self._current_node = self._current_node._next
-        self._counter += 1
         return element
