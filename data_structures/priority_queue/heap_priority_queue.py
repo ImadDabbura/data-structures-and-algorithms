@@ -50,7 +50,7 @@ class HeapPriorityQueue(PriorityQueueBase):
 
     def _heapify(self):
         parent = self._parent(len(self._data) - 1)
-        for i in range(len(self._data) - 1, -1, -1):
+        for i in range(parent, -1, -1):
             self._downheap(i)
 
     def add(self, key, value):
@@ -61,7 +61,7 @@ class HeapPriorityQueue(PriorityQueueBase):
         if self.is_empty():
             raise ValueError("Priority queue is empty")
         item = self._data[0]
-        return (item.key, item.value)
+        return (item._key, item._value)
 
     def remove_min(self):
         if self.is_empty():
@@ -69,7 +69,7 @@ class HeapPriorityQueue(PriorityQueueBase):
         self._swap(0, len(self._data) - 1)
         item = self._data.pop()
         self._downheap(0)
-        return (item.key, item.value)
+        return (item._key, item._value)
 
 
 class HeapSort:
