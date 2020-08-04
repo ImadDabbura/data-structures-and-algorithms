@@ -62,7 +62,7 @@ class HashMutableSet(MutableSet):
         found, s = self._find_slot(j, e)
         if found:
             self._table[s] = HashMutableSet._AVAIL
-            self._n += 1
+            self._n -= 1
 
     def __contains__(self, e):
         j = self._hash_function(e)
