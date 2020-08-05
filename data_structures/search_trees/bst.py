@@ -10,10 +10,16 @@ class BinarySearchTreeMap(MutableMapping):
             self._value = v
 
         def __eq__(self, other):
-            return self._key < other._key
+            return self._key == other._key
 
         def __ne__(self, other):
             return not (self == other)
+
+        def __lt__(self, other):
+            return self._key < other._key
+
+        def __gt__(self, other):
+            return self._key < other._key
 
     class _Node:
         __slots__ = "_parent", "_left", "_right", "_item"
