@@ -1,6 +1,6 @@
 def bucket_sort(L, k):
     n = len(L)
-    bucket = [[] for _ in range(k + 1)]
+    bucket = [[] for _ in range(k)]
     for e in L:
         bucket[e].append(e)
     output = [0] * n
