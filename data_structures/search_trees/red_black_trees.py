@@ -83,7 +83,7 @@ class RedBlackTreeMap(BinarySearchTreeMap):
         if not self._is_red(y):
             # case 1: y node is black and has one red child
             x = self._get_red_child(y)
-            if red_child:
+            if x:
                 old_color = self._is_red(z)
                 middle = self._restructure(x)
                 self._set_color(middle, old_color)
