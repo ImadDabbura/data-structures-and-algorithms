@@ -42,7 +42,7 @@ class HashMutableSet(MutableSet):
                 if first_available is None:
                     first_available = j
                 if self._table[j] is None:
-                    return False, j
+                    return False, first_available
             elif self._table[j] == e:
                 return True, j
             j = (j + 1) % len(self._table)
