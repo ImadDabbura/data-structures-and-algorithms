@@ -69,9 +69,9 @@ class DynamicArray:
         for i in range(self._n):
             if val == self._A[i]:
                 for j in range(i, self._n - 1):
-                    self._A[j] = self._A[i + 1]
+                    self._A[j] = self._A[j + 1]
                 self._n -= 1
-                self._A[self._n] = None  # Avoid loitering
+                self._A[self._n - 1] = None  # Avoid loitering
                 if self._n > 0 and self._n == self._capacity // 4:
                     # Half the array
                     self._resize(self._capacity * 0.5)
