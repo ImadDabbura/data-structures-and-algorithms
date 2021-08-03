@@ -70,9 +70,11 @@ class ResizedArrayQueue:
         if self._size <= 1:
             return
         for i in range(self._size // 2):
-            self._data[i], self._data[self._size - i - 1] = (
-                self._data[self._size - i - 1],
-                self._data[i],
+            first = (self._first + i) % self._capacity
+            last = (self._last - i) % self._capacity
+            self._data[first], self._data[last] = (
+                self._data[last],
+                self._data[first],
             )
 
     def __iter__(self):
