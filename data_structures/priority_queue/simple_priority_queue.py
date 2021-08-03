@@ -63,9 +63,7 @@ class SortedPriorityQueue(PriorityQueueBase):
     def add(self, key, value):
         walk = self._data.last()
         new = self._Item(key, value)
-        while walk:
-            if new >= walk.element():
-                break
+        while walk and new < walk.element():
             walk = self._data.before(walk)
         if not walk:
             self._data.first(new)
