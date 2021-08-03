@@ -184,6 +184,7 @@ class LinkedBinaryTree(BinaryTree):
         if not type(self) == type(t1) == type(t2):
             raise TypeError("Trees must be of the same type")
         node = self._validate(p)
+        self._size += len(t1) + len(t2)
         if not t1.is_empty():
             t1._root._parent = node
             node._left = t1
@@ -194,4 +195,3 @@ class LinkedBinaryTree(BinaryTree):
             node._right = t2
             t2._root = None
             t2._size = 0
-        self._size += len(t1) + len(t2)
