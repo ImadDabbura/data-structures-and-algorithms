@@ -16,7 +16,7 @@ class Partition:
             return self._element
 
     def make_group(self, e):
-        return self.Position(self, e)
+        return self.Position(e, self)
 
     def find(self, p):
         """Uses path compression heuristic while finding the root."""
