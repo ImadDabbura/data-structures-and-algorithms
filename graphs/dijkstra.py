@@ -50,7 +50,7 @@ def shortest_path_tree(g, src, d):
     tree = {}
     for v in d:
         if v is not src:
-            for edge in g.incident_edges(u, outgoing=False):
+            for edge in g.incident_edges(v, outgoing=False):
                 u = edge.opposite(v)
                 w = edge.element()
                 if d[u] + w == d[v]:
