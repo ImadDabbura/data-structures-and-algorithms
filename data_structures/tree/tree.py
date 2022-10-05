@@ -111,7 +111,7 @@ class Tree:
     def postorder(self):
         """Generate a postorder iteration of positions in tree."""
         if not self.is_empty():
-            for p in self._preorder(self.root()):
+            for p in self._postorder(self.root()):
                 yield p
 
     def breadth_first(self):
