@@ -12,7 +12,7 @@ class DynamicArray:
 
     def __len__(self):
         """Returns the number of elements stored in the array."""
-        return len(self._A)
+        return self._n
 
     def __getitem__(self, i):
         """Returns the element at index i."""
@@ -77,6 +77,21 @@ class DynamicArray:
                     self._resize(self._capacity * 0.5)
                 return
         raise ValueError("val not found")
+
+    def pop(self, index=-1):
+        """Remove and return item at index (default last)."""
+        if index < 0:
+            index += len(self)
+        if len(self) < index:
+            raise IndexError("index out of range")
+        e = self._A[index]
+        for j in range(index, self._n - 1):
+            self._A[j] = self._A[j + 1]
+        self._n -= 1
+        self._A[self._n - 1] = None
+        if self._n > 0 and self._n == self._capacity // 4:
+            self._resize(self._capacity * 0.5)
+        return e
 
     def reverse(self):
         """Reverse list in place."""
